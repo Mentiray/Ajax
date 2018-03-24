@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<input type="file" name="file" id="file"/>
+		<button id="submit" class="btn"></button>
+		<script type="text/javascript">
+			$("#submit").click(function(){
+				var formData = new FormData($("#file")[0]);
+				$.ajax({
+					type:"post",
+					url:"version2.php",
+					data: formData,
+					async:true,
+					success:function(data){
+						alert("success");
+					},
+					error:function(jqXHR){
+						alert(jqXHR.status);	
+					}
+				})
+				
+				
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,10 @@
+{
+	"bossname" : "Steve",
+	"company":[
+		{
+			"name":"apple",
+			"address":"America"
+		}	
+	],
+	"bossage":29
+}

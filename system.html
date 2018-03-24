@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
+		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/chaxun.js"></script>
+		<script type="text/javascript" src="js/insert.js"></script>
+	</head>
+	<body>
+		<table class="table">
+			<caption>人员基本情况</caption>
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th>年龄</th>
+				</tr>
+			</thead>
+			<tbody>
+						
+			</tbody>
+		</table>
+		<form class="collapse" id="addForm">
+			<div class="form-group">
+				<label for="insertName">请输入姓名</label>
+				<input type="text" id="insertName" value="" />				
+			</div>
+			<div class="form-group">
+				<label for="insertAge">请输入年龄</label>
+				<input type="text" id="insertAge" value="" />
+			</div>
+			<div class="form-group">
+				<button class="btn" id="add">提交</button>
+				<button class="btn" id="back">返回</button>
+			</div>
+		</form>
+		<button class="btn" id="chaxun">查询</button>
+		<button class="btn" id="xinzeng" data-toggle="collapse" data-target="#addForm">新增</button>
+		<button class="btn" id="xiugai">修改</button>
+		<script type="text/javascript">
+			$(function(){
+				refresh();
+			});
+		</script>
+	</body>
+</html>
+
+
+
