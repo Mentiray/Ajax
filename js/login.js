@@ -6,7 +6,10 @@ $("#login").click(function(){
 	$.ajax({
 		type: "POST",
 		url: "login.php",
-		data: loginTable,
+		data: {
+			"username" : $("#userName").val(),
+			"userpwd"  : $("#userPwd").val()
+		},
 		dataType: "json",
 		success: function(data){
 			switch(data.type){

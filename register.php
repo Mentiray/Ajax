@@ -18,5 +18,7 @@
 		"type" => $type
 	);
 	echo json_encode($response);
+	$link->close();
+
 	
 ?>
