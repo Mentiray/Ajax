@@ -4,10 +4,19 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">  
-		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="js/jquery-3.3.1.min.js"></script>
 		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/chaxun.js"></script>
-		<script type="text/javascript" src="js/insert.js"></script>
+		<style type="text/css">
+			.xiugai,.shanchu,.xiugai:hover,.shanchu:hover{
+				text-decoration: none;
+				margin-right: 20px;
+				cursor: pointer;
+			}
+			td{
+				width: 33.33%;
+			}
+			
+		</style>
 	</head>
 	<body>
 		<table class="table">
@@ -16,6 +25,7 @@
 				<tr>
 					<th>姓名</th>
 					<th>年龄</th>
+					<th>操作</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -36,14 +46,58 @@
 				<button class="btn" id="back">返回</button>
 			</div>
 		</form>
-		<button class="btn" id="chaxun">查询</button>
 		<button class="btn" id="xinzeng" data-toggle="collapse" data-target="#addForm">新增</button>
-		<button class="btn" id="xiugai">修改</button>
+
+	
 		<script type="text/javascript">
 			$(function(){
 				refresh();
+				
 			});
+			function refresh(){
+				$("tbody").empty();
+				$.ajax({
+					url : "GetData.php",
+					type : "POST",
+					dataType : "json",
+					success : function(data){
+						var $tbody = $("tbody");
+						var list = data.boss; //选取list对象，进行遍历
+						/*foreach遍历list对象
+						list.forEach(function(item){
+							var $bossname = $("<td></td>").html(item.bossname);
+							var $bossage = $("<td></td>").html(item.bossage);
+							var $tr = $("<tr></tr>");
+							$tr.append($bossname,$bossage);
+							$tbody.append($tr);
+						});*/
+						
+						/*$.each遍历list对象*/
+						$.each(list,function(index,item){
+							var $bossname = $("<td></td>").html(item.bossname);
+							var $bossage = $("<td></td>").html(item.bossage);
+							var $operation = $("<td></td>");
+							var $change = $("<button class='xiugai'>修改</button>");
+							var $delete = $("<button>删除</button>");
+							$operation.append($change,$delete);
+							var $tr = $("<tr></tr>");
+							$tr.append($bossname,$bossage,$operation);
+							$tbody.append($tr);
+						});
+					},
+					error : function(jqXHR){
+						alert(jqXHR.status);
+					}	
+				})
+			}	
+			//点击无法修改
+		
+			
+			
+			
 		</script>
+
+		<script type="text/javascript" src="js/insert.js"></script>
 	</body>
 </html>
 

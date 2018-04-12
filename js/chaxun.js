@@ -1,3 +1,6 @@
+$(function(){
+	refresh();
+});
 function refresh(){
 	$("tbody").empty();
 	$.ajax({
@@ -6,7 +9,7 @@ function refresh(){
 		dataType : "json",
 		success : function(data){
 			var $tbody = $("tbody");
-			var list = data.list; //选取list对象，进行遍历
+			var list = data.boss; //选取list对象，进行遍历
 			/*foreach遍历list对象
 			list.forEach(function(item){
 				var $bossname = $("<td></td>").html(item.bossname);
