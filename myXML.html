@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+	</head>
+	<body>
+		<table id="myForm"></table>
+		<script type="text/javascript">
+			$(function(){
+				$.ajax({
+					type:"get",
+					url:"myData.xml",
+					async:true,
+					success:function(data){
+						$(data).find("root").find("student").each(function(i,student){
+							var name = $(student).find("name").text();
+							var age = $(student).find("age").text();
+							$("#myForm").append("<tr>"+"<td>"+name+"</td>"+"<td>"+age+"</td>"+"</tr>")
+						})
+					},
+					error:function(jqXHR){
+						
+					}
+				});
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ajax</title>
+   <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+    $(function(){
+        // 方法一：
+        $.ajax({
+            type:"POST",
+            url:"data.json",
+            dataType:"json",
+            success:function(data){
+                var json=eval(data.item);
+                $.each(json,function(i,item){
+                     var strNowEngineer=item.strNowEngineer;
+                    var completeNum=item.completeNum;
+                    var InTreatmentNum=item.InTreatmentNum;
+                    $("#data").append('<tr><td>'+strNowEngineer+'</td><td>'+completeNum+'</td><td>'+InTreatmentNum+'</td></tr>'); 
+                })
+                alert(result);
+            },
+            error:function(data){
+                alert("failed");
+            }
+        })
+        
+    })
+    </script>
+</head>
+<body>
+    <div class="content">
+        <table id="data">
+            
+        </table>
+    </div>
+</body>
+</html>

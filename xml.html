@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+    // ajax读取xml格式数据：
+    $(function(){
+        // 方法一
+        $.ajax({
+            type:"POST",
+            url:"data.xml",
+            dataType:"xml",
+            success:function(data){
+                $(data).find("root").find("item").each(function(i,item){
+                    var strNowEngineer=$(item).find("strNowEngineer").text();
+                    var completeNum=$(item).find("completeNum").text();
+                    var InTreatmentNum=$(item).find("InTreatmentNum").text();
+                    $("#datatable").append('<tr><td>'+strNowEngineer+'</td><td>'+completeNum+'</td><td>'+InTreatmentNum+'</td></tr>');
+                })
+            },
+            error:function(){
+                alert("failed");
+            }
+        })
+        
+    })
+    </script>
+</head>
+<body>
+    <div class="topnavright" id="top_user">
+        <table id="datatable">
+            
+        </table>
+    </div>
+</body>
+</html>

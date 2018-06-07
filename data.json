@@ -1,0 +1,21 @@
+{
+	"item": [
+		{
+			"strNowEngineer": "dypro001",
+			"completeNum": "42",
+			"InTreatmentNum": "0"
+		}, {
+			"strNowEngineer": "dypro002",
+			"completeNum": "4",
+			"InTreatmentNum": "1"
+		}, {
+			"strNowEngineer": "dypro003",
+			"completeNum": "5",
+			"InTreatmentNum": "2"
+		}, {
+			"strNowEngineer": "dypro004",
+			"completeNum": "6",
+			"InTreatmentNum": "0"
+		}
+	]
+}
