@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>通过PHP设置CORS</title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		// CORS 是一个 W3C 标准，全称是"跨域资源共享"（Cross-origin resource sharing）它允许浏览器向跨源服务器，发出 XMLHttpRequest 请求，从而克服了 ajax 只能同源使用的限制。因此，实现 CORS 通信的关键是服务器。只要服务器实现了 CORS 接口，就可以跨源通信。
+		// 1.使用简单方便，更为安全
+		// 2.支持 POST 请求方式
+		// 3.CORS 是一种新型的跨域问题的解决方案，存在兼容问题，仅支持 IE 10 以上
+
+		$(function(){
+			$.ajax({
+				url: "http://v4054953.11132.31la.com.cn/1.php",
+				type: "Get",
+				dataType: "json",
+				success: function (data) {
+					var myData = eval(data.person);
+					$.each(myData,function(index,el){
+						console.log(el.name+el.age);
+					})
+				}
+			})
+		})
+	</script>
+</body>
+</html>

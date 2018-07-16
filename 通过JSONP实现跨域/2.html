@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>通过JSONP跨域</title>	
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+		// JSONP的最基本的原理是：动态添加一个<script>标签，而script标签的src属性是没有跨域的限制的。这样说来，这种跨域方式其实与ajax XmlHttpRequest协议无关了。
+		// 1.首先前端先设置好回调函数，并将其作为 url 的参数。
+		// 2.服务端接收到请求后，通过该参数获得回调函数名，并将数据放在参数中将其返回
+		// 3.收到结果后因为是 script 标签，所以浏览器会当做是脚本进行运行，从而达到跨域获取数据的目的。
+		// JSONP是一个非官方的协议，它允许在服务器端集成Script tags返回至客户端，通过javascript callback的形式实现跨域访问。
+		// JSONP支持GET不支持POST
+		// $(function(){
+		// 	var script = $("<script>");
+		// 	script.attr("src","http://v4054953.11132.31la.com.cn/2.php?callback=copy");
+		// 	$("body").append(script);
+		// 	function copy(data){
+		// 		// var myData = eval(data.person);
+		// 		$.each(data.person,function(index,el){
+		// 			console.log(el.name);
+		// 		})
+		// 	}
+		// 这里无法识别copy
+
+		$.ajax({
+			url: "http://v4054953.11132.31la.com.cn/2.php",
+			type: "Get",
+			dataType: "jsonp",
+			// 可以指定函数名
+			// jsonpCallback: "copy",
+			success: function(data){
+				var myData = eval(data.person);
+				$.each(myData,function(index,el){
+					console.log(el.name);
+				})
+			}
+		})
+
+		})
+	</script>
+
+</body>
+</html>
